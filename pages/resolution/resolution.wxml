@@ -1,0 +1,173 @@
+
+<!-- <view class="cu-card article"> -->
+<!-- <view class="cu-item shadow">
+      <view class="title">
+        寄语
+      </view>
+      <view class="content">
+        <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+        <view class="desc">
+          <view class="text-content">本小程序永久提供免费解析服务,如果大家使用下来觉得还不错的可以右上角分享给自己的朋友。
+          有什么好的意见和想法也可以联系我٩(๑❛ᴗ❛๑)۶</view>
+          <view class="text-content"></view>
+        </view>
+      </view>
+</view> -->
+
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">短视频一键去水印</view>
+</cu-custom>
+
+<view class="platforms">
+    <!-- <text class="platforms-title">短视频去水印小帮手支持以下平台,部分平台不支持直接保存到相册</text> -->
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper>
+        <swiper-item>
+          <view class="swiper-item {{item}}">
+            <view class="platforms-item">
+              <image src="../../images/logo-douyin.png"></image>
+              <text>抖音</text>
+            </view>
+            <view class="platforms-item">
+              <image src="../../images/logo-gitShow.png"></image>
+              <text>快手</text>
+            </view>
+            <view class="platforms-item">
+              <image src="../../images/logo-ppx.png"></image>
+              <text>皮皮虾</text>
+            </view>
+            <view class="platforms-item">
+              <image src="../../images/logo-volcano.png"></image>
+              <text>火山视频</text>
+            </view>
+          </view>
+          <view class="swiper-item {{item}}">
+            <view class="platforms-item">
+              <image src="../../images/logo-microview.png"></image>
+              <text>微视</text>
+            </view>
+            <view class="platforms-item">
+              <image src="../../images/logo-meipai.png"></image>
+              <text>美拍</text>
+            </view>
+            <view class="platforms-item">
+              <image src="../../images/logo-xiaokaxiu.png"></image>
+              <text>小咖秀</text>
+            </view>
+            <view class="platforms-item">
+              <image src="../../images/logo-zuiyou.png"></image>
+              <text>最右</text>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</view>
+
+<view class="cu-list menu card-menu">
+  <view class="cu-item {{menuArrow?'arrow':''}}">
+    <view class="content">
+      <text class="cuIcon-warn text-red"></text>
+      <text class="text-grey">注意</text>
+    </view>
+    <view class="action">
+      <text class="text-grey text-sm">如果出现解析失败的情况请退出重试</text>
+    </view>
+  </view>
+
+  <!-- <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-edit text-green"></text>
+      <text class="text-grey">短视频标题</text>
+    </view>
+    <view class="action">
+      <text class="text-grey text-sm">{{videoTitle?videoTitle:"复制分享链接后自动抓取"}}</text>
+    </view>
+  </view> -->
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-link text-green"></text>
+      <text class="text-grey">链接</text>
+    </view>
+    <view class="action">
+      <text class="text-grey text-sm">{{shortVideoUrl}}</text>
+      <button bindtap="paste" class="cu-tag line-green">手动粘贴</button>
+    </view>
+  </view>
+
+  <!-- <view class="cu-item arrow">
+      <navigator class="content" url="../photos/photos" open-type="navigate" hover-class="none">
+        <text class="cuIcon-formfill text-red"></text>
+        <text class="text-grey">本地解析记录（半小时内）</text>
+      </navigator>
+  </view> -->
+</view>
+
+<view class="padding flex flex-direction" wx:if="{{isButton}}">
+  <button bindtap="submit" class="cu-btn bg-blue lg">
+    <text>一键去除视频水印</text>
+  </button>
+</view>
+<view class="padding flex flex-direction" wx:if="{{!isButton}}">
+  <button bindtap="submit" class="cu-btn bg-blue lg" type="" disabled>
+   <text  class="cuIcon-loading iconfont-spin"></text>
+   解析中
+  </button>
+</view>
+
+<view class="cu-modal {{isShow?'show':''}}">
+  <view class="cu-dialog">
+    <video src="{{url}}" controls="false" autoplay="true" muted="true" style="margin: 25px 0px 0px">
+      <view class="cu-bar justify-end text-blue">
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close "></text>
+        </view>
+      </view>
+    </video>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub solid-left text-blue" bindtap="saveVideo">保存到相册</view>
+    </view>
+  </view>
+</view>
+<view class='cu-load load-modal' wx:if="{{isDownload}}">
+  <image src='/images/logo.png' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>视频保存中</view>
+</view>
+
+
+<view class="cu-modal show" wx:if="{{isUrlDownload}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">微信域解析异常</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view>
+      你可以复制以下链接到浏览器进行下载
+    </view>
+    <view class="padding-xl">
+      <text style="-webkit-line-clamp: 2;">{{shortUrl}}</text>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn bg-blue margin-left" bindtap="prevent">复制</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="grid col-2" style="margin: -4px 15px 0px">
+  <view class="bg-img padding-bottom-xl" style="background-image: url('https://mini.rcer666.cn/tip1.png');height: 600rpx; margin: 0px 3px 0px;width: 49%;">
+    <view class="bg-shadeTop padding padding-bottom-xl">
+      1. 进入短视频平台复制分享链接
+    </view>
+  </view>
+  <view class="bg-img padding-bottom-xl" style="background-image: url('https://mini.rcer666.cn/tip2.png');height: 600rpx;width: 49%;">
+    <view class="bg-shadeTop padding padding-bottom-xl">
+      2. 粘贴刚刚复制的链接到本小程序，点击一键去除视频水印
+    </view>
+  </view>
+</view>
