@@ -212,25 +212,25 @@ Component({
   pageLifetimes: {
     show: function () {
       // 如果剪切板内有内容则尝试自动填充
-      wx.getClipboardData({
-        success: res => {
-          var str = res.data.trim()
-          if (this.regUrl(str)) {
-            wx.showModal({
-              title: '检测到剪切板有视频地址，是否自动填入？',
-              success: res => {
-                if (res.confirm) {
-                  this.setData({
-                    videoUrl: this.findUrlByStr(str)[0],
-                    videoTitle: str.substring(0, 20),
-                    shortVideoUrl: this.findUrlByStr(str)[0].substring(0, 35) + "...",
-                  })
-                }
-              }
-            })
-          }
-        }
-      })
+      // wx.getClipboardData({
+      //   success: res => {
+      //     var str = res.data.trim()
+      //     if (this.regUrl(str)) {
+      //       wx.showModal({
+      //         title: '检测到剪切板有视频地址，是否自动填入？',
+      //         success: res => {
+      //           if (res.confirm) {
+      //             this.setData({
+      //               videoUrl: this.findUrlByStr(str)[0],
+      //               videoTitle: str.substring(0, 20),
+      //               shortVideoUrl: this.findUrlByStr(str)[0].substring(0, 35) + "...",
+      //             })
+      //           }
+      //         }
+      //       })
+      //     }
+      //   }
+      // })
     },
     hide: function () {
       // 页面被隐藏

@@ -93,7 +93,7 @@
     </view>
     <view class="action">
       <text class="text-grey text-sm">{{shortVideoUrl}}</text>
-      <button bindtap="paste" class="cu-tag line-green">手动粘贴</button>
+      <button bindtap="paste" class="cu-tag line-blue">点我粘贴</button>
     </view>
   </view>
 
@@ -106,9 +106,14 @@
 </view>
 
 <view class="padding flex flex-direction" wx:if="{{isButton}}">
-  <button bindtap="submit" class="cu-btn bg-blue lg">
-    <text>一键去除视频水印</text>
-  </button>
+  <view class="cu-bar btn-group">
+    <button class="cu-btn bg-green shadow-blur round lg" open-type="share">
+      <text>一键分享</text>
+    </button>
+    <button bindtap="submit" class="cu-btn bg-blue shadow-blur round lg">
+      <text>一键去除水印</text>
+    </button>
+  </view>
 </view>
 <view class="padding flex flex-direction" wx:if="{{!isButton}}">
   <button bindtap="submit" class="cu-btn bg-blue lg" type="" disabled>
