@@ -34,6 +34,9 @@ Component({
   },
   //组件的函数
   methods: {
+    isEmpty: function (s) {
+      return s == undefined || s == null || s == ''
+    },
     openVideoInfo: function(){
       wx.navigateTo({
         url: 'test?id=1'
@@ -56,27 +59,35 @@ Component({
         success: res => {
           var str = res.data.trim()
           console.log("paste str:", str)
-          if (this.regUrl(str)) {
+          if (this.isEmpty(str)) {
+            this.showToast("请复制短视频分享链接后再来")
+          }
+          else if (this.regUrl(str)) {
             console.log(this.findUrlByStr(str))
             this.setData({
               videoUrl: this.findUrlByStr(str)[0],
               videoTitle: str.substring(0, 20),
               shortVideoUrl: this.findUrlByStr(str)[0].substring(0, 35) + "...",
             })
-          }else{
-            this.showToast("请复制短视频分享链接后再来")
+          } else {
+            this.showToast("短视频分享链接不正确")
           }
         }
       })
     },
     submit: function () {
+      let url = this.data.videoUrl
       this.setData({
         isButton: false
       })
-      if (this.regUrl(this.data.videoUrl)) {
+      if (this.regUrl(url)) {
         this.parseVideo();
       } else {
-        this.showToast('请复制短视频平台分享链接后再来')
+        if (this.isEmpty(url)) {
+          this.showToast('请粘贴短视频分享链接')
+        } else {
+          this.showToast('短视频分享链接不正确')
+        }
         this.setData({
           isButton: true
         })
