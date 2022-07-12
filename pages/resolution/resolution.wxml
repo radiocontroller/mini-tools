@@ -18,10 +18,13 @@
   <view slot="content">短视频一键去水印</view>
 </cu-custom>
 
+<view class="adContainer">
+    <ad unit-id="adunit-059187315ea3e2d0"></ad>
+  </view>
+
 <view class="platforms">
     <!-- <text class="platforms-title">短视频去水印小帮手支持以下平台,部分平台不支持直接保存到相册</text> -->
   <!-- banner广告 -->
-  <ad unit-id="adunit-059187315ea3e2d0"></ad>
   <view class="page-body">
     <view class="page-section page-section-spacing swiper">
       <swiper>
@@ -95,7 +98,7 @@
     </view>
     <view class="action">
       <text class="text-grey text-sm">{{shortVideoUrl}}</text>
-      <button bindtap="paste" class="cu-tag line-orange">点击粘贴</button>
+      <button bindtap="paste" class="cu-btn bg-orange round light">点击粘贴</button>
     </view>
   </view>
 
@@ -108,16 +111,20 @@
 </view>
 
 <view class="padding flex flex-direction" wx:if="{{isButton}}">
-  <ad unit-id="adunit-7231837f2d60abae"></ad>
   <view class="cu-bar btn-group">
     <button class="cu-btn bg-green shadow-blur round lg" open-type="share">
-      <text>分享好友</text>
+      分享好友
     </button>
     <button bindtap="submit" class="cu-btn bg-blue shadow-blur round lg">
       <text>去除水印</text>
     </button>
   </view>
 </view>
+
+<view class="adContainer">
+  <ad unit-id="adunit-7231837f2d60abae"></ad>
+</view>
+
 <view class="padding flex flex-direction" wx:if="{{!isButton}}">
   <button bindtap="submit" class="cu-btn bg-blue lg" type="" disabled>
    <text  class="cuIcon-loading iconfont-spin"></text>
@@ -134,7 +141,9 @@
         </view>
       </view>
     </video>
-    <ad unit-id="adunit-81449acc1b6c076e"></ad>
+    <view class="adContainer" wx:if="{{ isShow }}">
+      <ad unit-id="adunit-81449acc1b6c076e"></ad>
+    </view>
     <view class="cu-bar bg-white">
       <view class="action margin-0 flex-sub solid-left text-blue" bindtap="saveVideo">保存到相册</view>
     </view>
@@ -168,7 +177,7 @@
   </view>
 </view>
 
-<view class="grid col-2" style="margin: -4px 15px 0px">
+<!-- <view class="grid col-2" style="margin: -4px 15px 0px">
   <view class="bg-img padding-bottom-xl" style="background-image: url('https://mini.rcer666.cn/tip1.png');height: 600rpx; margin: 0px 3px 0px;width: 49%;">
     <view class="bg-shadeTop padding padding-bottom-xl">
       1. 进入短视频平台复制分享链接
@@ -179,4 +188,4 @@
       2. 粘贴刚刚复制的链接到本小程序，点击一键去除视频水印
     </view>
   </view>
-</view>
+</view> -->
