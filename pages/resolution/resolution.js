@@ -17,13 +17,28 @@ Component({
   //组件的生命周期
   lifetimes: {
     created: function () {
-      if (!wx.getStorageSync('openId')) {
-      //初始化次数及信息
-      var urlContent = app.globalData.url + "api/wx/login"
-      request.requestPostApi(urlContent, {}, this, null, function (res) {
-        console.error(res)
-      })       
-    }
+      // 插入开屏广告
+      let interstitialAd = null
+      if (wx.createInterstitialAd) {
+        interstitialAd = wx.createInterstitialAd({
+          adUnitId: 'adunit-c77fe00230a129cf'
+        })
+        interstitialAd.onLoad(() => {})
+        interstitialAd.onError((err) => {})
+        interstitialAd.onClose(() => {})
+      }
+      if (interstitialAd) {
+        interstitialAd.show().catch((err) => {
+          console.error(err)
+        })
+      }
+      // if (!wx.getStorageSync('openId')) {
+      //   //初始化次数及信息
+      //   var urlContent = app.globalData.url + "api/wx/login"
+      //   request.requestPostApi(urlContent, {}, this, null, function (res) {
+      //     console.error(res)
+      //   })
+      // }
     },
     attached: function () {
       // 在组件实例进入页面节点树时执行

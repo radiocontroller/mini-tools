@@ -20,6 +20,8 @@
 
 <view class="platforms">
     <!-- <text class="platforms-title">短视频去水印小帮手支持以下平台,部分平台不支持直接保存到相册</text> -->
+  <!-- banner广告 -->
+  <ad unit-id="adunit-059187315ea3e2d0"></ad>
   <view class="page-body">
     <view class="page-section page-section-spacing swiper">
       <swiper>
@@ -93,7 +95,7 @@
     </view>
     <view class="action">
       <text class="text-grey text-sm">{{shortVideoUrl}}</text>
-      <button bindtap="paste" class="cu-tag line-blue">点我粘贴</button>
+      <button bindtap="paste" class="cu-tag line-orange">点击粘贴链接</button>
     </view>
   </view>
 
@@ -108,10 +110,10 @@
 <view class="padding flex flex-direction" wx:if="{{isButton}}">
   <view class="cu-bar btn-group">
     <button class="cu-btn bg-green shadow-blur round lg" open-type="share">
-      <text>一键分享</text>
+      <text>分享好友</text>
     </button>
     <button bindtap="submit" class="cu-btn bg-blue shadow-blur round lg">
-      <text>一键去除水印</text>
+      <text>去除水印</text>
     </button>
   </view>
 </view>
@@ -170,7 +172,7 @@
       1. 进入短视频平台复制分享链接
     </view>
   </view>
-  <view class="bg-img padding-bottom-xl" style="background-image: url('https://mini.rcer666.cn/tip2.png');height: 600rpx;width: 49%;">
+  <view class="bg-img padding-bottom-xl" style="background-image: url('https://mini.rcer666.cn/tip2.png');height: 600rpx;width: 49%;margin-bottom: 5.4rpx">
     <view class="bg-shadeTop padding padding-bottom-xl">
       2. 粘贴刚刚复制的链接到本小程序，点击一键去除视频水印
     </view>
