@@ -132,7 +132,7 @@
   </button>
 </view>
 
-<view class="cu-modal {{isShow?'show':''}}">
+<view class="cu-modal {{isShow?'show':''}}" style="visibility: {{isShow?'visible':'hidden'}}">
   <view class="cu-dialog">
     <video src="{{url}}" controls="false" autoplay="true" muted="true" style="margin: 25px 0px 0px">
       <view class="cu-bar justify-end text-blue">
