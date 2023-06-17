@@ -115,7 +115,7 @@ Component({
       var params = {
         url: this.data.videoUrl
       };
-      request.requestPostApi(app.globalData.url + 'api/short_videos', params, this, function (res) {
+      request.requestPostApi(app.globalData.url + 'api/videos', params, this, function (res) {
         if (res.code != 200) {
           that.showToast('解析失败, 请检查链接正确性或重试一次')
         } else {
