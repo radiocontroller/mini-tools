@@ -1,6 +1,6 @@
 # 短视频去水印小程序
 
-![qrcode](https://mini.rcer666.cn/wechat_qrcode.jpg)
+### 小程序码: https://mini.rcer666.cn/wechat_qrcode.jpg
 
 ### nginx反向代理下载视频地址绕过wechat下载限制
 
